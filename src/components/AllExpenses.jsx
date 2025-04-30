@@ -51,7 +51,7 @@ const CATEGORIES = [
 ];
 
 // API URL for json-server
-const API_URL = 'http://localhost:3001';
+const API_URL = 'https://my-json-server.typicode.com/Haleem001/expense-tracker';
 
 const AllExpenses = () => {
   const [expenses, setExpenses] = useState([]);

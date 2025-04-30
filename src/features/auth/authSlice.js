@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // Base URL for the API
-const API_URL = 'http://localhost:3001';
+const API_URL = 'https://my-json-server.typicode.com/Haleem001/expense-tracker';
 
 // Get initial state from localStorage
 const loadAuthState = () => {

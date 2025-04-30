@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3001';
+const API_URL = 'https://my-json-server.typicode.com/Haleem001/expense-tracker';
 
 export const api = {
   // User related API calls
