@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin123",
+      "name": "Admin User"
+    },
+    {
+      "id": "2",
+      "username": "jane",
+      "password": "jane123",
+      "name": "Jane Doe"
+    },
+    {
+      "id": "3",
+      "username": "haleem",
+      "password": "haleem123",
+      "name": "Haleem Ghali"
+    },
+    {
+      "id": "aa32",
+      "username": "haleem1",
+      "password": "haleem123",
+      "name": "Haleem"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "1",
+      "userId": "3",
+      "category": "Food",
+      "amount": 20000,
+      "date": "2025-04-15",
+      "description": "Grocery shopping",
+      "createdAt": "2025-04-15T12:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "userId": "3",
+      "category": "Entertainment",
+      "amount": 10000,
+      "date": "2025-02-13",
+      "description": "Movie tickets",
+      "createdAt": "2025-02-13T12:00:00.000Z"
+    }
+  ]
+}
