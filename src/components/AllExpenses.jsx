@@ -225,7 +225,8 @@ const AllExpenses = () => {
         <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
           <Link 
             color="inherit" 
-            href="#" 
+            href="/dashboard"
+            underline="hover"
             onClick={(e) => {
               e.preventDefault();
               navigate('/dashboard');

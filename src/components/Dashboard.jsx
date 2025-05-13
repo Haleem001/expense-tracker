@@ -27,7 +27,8 @@ import {
   Snackbar,
   Alert,
   useTheme,
-  alpha
+  alpha,
+
 } from '@mui/material';
 import { 
   Add as AddIcon, 
@@ -274,7 +275,7 @@ const Dashboard = () => {
         <Toolbar>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <DashboardIcon sx={{ mr: 1.5 }} />
-            <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }} data-testid="expense-tracker">
               Expense Tracker
             </Typography>
           </Box>
@@ -300,6 +301,7 @@ const Dashboard = () => {
                   bgcolor: alpha(theme.palette.common.white, 0.1)
                 }
               }}
+            data-testid="logout-button"
             >
               Logout
             </Button>
@@ -324,10 +326,10 @@ const Dashboard = () => {
               <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                   <Box>
-                    <Typography color="textSecondary" gutterBottom>
+                    <Typography color="textSecondary" gutterBottom >
                       Total Expenses
                     </Typography>
-                    <Typography variant="h4" component="div" sx={{ fontWeight: 'bold' }}>
+                    <Typography variant="h4" component="div" sx={{ fontWeight: 'bold' }} data-testid="total-expenses">
                       {currencySymbol}{totalExpenses.toFixed(2)}
                     </Typography>
                     <Typography color="textSecondary">
@@ -466,8 +468,9 @@ const Dashboard = () => {
                       boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                       px: 2
                     }}
+                  data-testid="add-expense-button"
                   >
-                    Add Expense
+                    Add  Expense
                   </Button>
                 </Box>
               </Box>
@@ -669,9 +672,11 @@ const Dashboard = () => {
             select
             label="Category"
             name="category"
+            placeholder='Category'
             value={newExpense.category}
             onChange={handleInputChange}
             fullWidth
+            data-testid="category-select"
             margin="normal"
             sx={{ mt: 2 }}
             InputProps={{
@@ -700,6 +705,7 @@ const Dashboard = () => {
             label="Amount"
             name="amount"
             type="number"
+            placeholder='Amount'
             value={newExpense.amount}
             onChange={handleInputChange}
             fullWidth
@@ -729,11 +735,12 @@ const Dashboard = () => {
           <TextField
             label="Description"
             name="description"
+          
             value={newExpense.description}
             onChange={handleInputChange}
             fullWidth
             margin="normal"
-            placeholder="What was this expense for?"
+            placeholder="Description"
             InputProps={{
               sx: { borderRadius: 2 }
             }}

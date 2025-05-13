@@ -109,6 +109,33 @@ const SignupForm = () => {
       }
     }
   };
+  const handleSubmit2 = async (e) => {
+    e.preventDefault();
+    
+    // Validate form data
+    if (formData.password !== formData.confirmPassword) {
+      // Handle password mismatch
+      return;
+    }
+
+    try {
+      const result = await dispatch(signup({
+        username: formData.username,
+        password: formData.password,
+        name: formData.name
+      })).unwrap(); // Important: use unwrap() to handle promise resolution
+
+      // Check if signup was successful
+      if (result) {
+        navigate('/dashboard'); // Explicitly navigate after successful signup
+      }
+    } catch (error) {
+      // Handle signup error
+      console.error('Signup failed', error);
+    }
+  };
+
+
 
   return (
     <Paper 
@@ -122,7 +149,7 @@ const SignupForm = () => {
     >
       <Box 
         component="form" 
-        onSubmit={handleSubmit} 
+        onSubmit={handleSubmit2} 
         sx={{ 
           p: 3,
         }}
@@ -175,6 +202,7 @@ const SignupForm = () => {
           helperText={errors.password}
           variant="outlined"
           autoComplete="new-password"
+          data-testid="password-input"
           InputProps={{
             sx: { borderRadius: 1 },
             endAdornment: (
@@ -183,6 +211,7 @@ const SignupForm = () => {
                   aria-label="toggle password visibility"
                   onClick={() => setShowPassword(!showPassword)}
                   edge="end"
+                  data-testid="password-visibility-button"
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
@@ -202,6 +231,7 @@ const SignupForm = () => {
           error={!!errors.confirmPassword}
           helperText={errors.confirmPassword}
           variant="outlined"
+          data-testid="confirm-password-input"
           autoComplete="new-password"
           InputProps={{
             sx: { borderRadius: 1 },
@@ -211,6 +241,7 @@ const SignupForm = () => {
                   aria-label="toggle confirm password visibility"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   edge="end"
+                  data-testid="confirm-password-toggle"
                 >
                   {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
@@ -240,6 +271,7 @@ const SignupForm = () => {
             }
           }}
           disabled={loading}
+          data-testid="signup-button"
         >
           {loading ? <CircularProgress size={24} color="inherit" /> : 'Sign Up'}
         </Button>
